@@ -697,4 +697,4 @@ Y4NTY5MjY0Ml19
 
 ## Acknowledgments 
 
-The material in this guide and my understanding of Bash scripting owes much to @scottsimpson's Learning Bash Scripting course on [Lynda.com](https://www.lynda.com/Bash-tutorials/Learning-Bash-Scripting/142989-2.html). 
+The material in this guide and my understanding of Bash scripting owes much to [Scott Simpson](https://github.com/scottsimpson)'s Learning Bash Scripting course on [Lynda.com](https://www.lynda.com/Bash-tutorials/Learning-Bash-Scripting/142989-2.html). 
