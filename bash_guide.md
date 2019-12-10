@@ -699,3 +699,7 @@ echo "$greeting, world (planet)"
 eyJoaXN0b3J5IjpbLTE2NDk3NDIyNDUsLTgxNzQ0MDg1MCwtMT
 Y4NTY5MjY0Ml19
 -->
+
+## Acknowledgments 
+
+The material in this guide and my understanding of Bash scripting owes much to @scottsimpson's Learning Bash Scripting course on [Lynda.com](https://www.lynda.com/Bash-tutorials/Learning-Bash-Scripting/142989-2.html). 
