@@ -288,11 +288,11 @@ Standard Input, Standard Output and Standard Error
 
 What are these
 
-  Name                       What is it?              Descriptor
-  -------------------------- ---------------------- ------------
-  Standard input (stdin)     Keyboard input                    0
-  Standard output (stdout)   Text on screen                    1
-  Standard error (stderr)    Error text on screen              2
+  Name                       | What is it?            |   Descriptor
+  -------------------------- | ---------------------- | ------------
+  Standard input (stdin)     | Keyboard input         |            0
+  Standard output (stdout)   | Text on screen         |            1
+  Standard error (stderr)    | Error text on screen   |            2
 
 ### Standard Redirect Commands
 
@@ -917,10 +917,6 @@ Miscellaneous
 -   `cat /etc/*-release` on a Linux machine prints out distribution
     information
 -   Red Hat, Fedora and CentOS use `dnf` package manager
-    `<!--stackedit_data:
-    eyJoaXN0b3J5IjpbLTE2NDk3NDIyNDUsLTgxNzQ0MDg1MCwtMT
-    Y4NTY5MjY0Ml19
-    -->`{=html}
 
 Acknowledgments
 ---------------
