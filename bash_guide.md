@@ -1,11 +1,6 @@
----
-title: Bash Notes
-author: Kirkwood Donavin
----
+# A Guide to the Born Again SHell
 
-# Bash Notes
-
-This document is for user kDubs and is not meant to be a comprehensive guide. Bash is a command-line language that stands for Bourne Again Shell. It follows the Unix core-philosophy: *Tools should do one thing, and do it well.* Unix Bash script follows the following basic syntax
+Bash is a command-line language that stands for Bourne Again Shell. It follows the Unix core-philosophy: *Tools should do one thing, and do it well.* Unix Bash script follows the following basic syntax
 
     command option(s) argument(s)
 
