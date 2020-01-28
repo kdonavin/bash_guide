@@ -221,6 +221,7 @@ Storage and System Commands
     all volumes with partition tables, regardless of whether they are
     mounted.
 -   `free`: returns a (`-h`: human-readable) memory report.
+-   `htop`: Human read-able `top` command. Shows current CPU core and memory usage
 -   `lsblk`: list information about all available block devices.
     Example: `lsblk -f` outputs all known blocks an information about
     their file systems.
