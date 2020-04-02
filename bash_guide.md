@@ -112,9 +112,6 @@ May be cut with `cut -f (--fields) 2 file.txt`. This will produce:
 -   `export`: set environmental variable, accessible to sub-processes.
     E.g., `export name=value`.
 -   `fg [job#]`: send to the foreground a job running in the background
--   `find <dir> <expression>`: find `expression` in `dir` directory.
-    E.g., `find . -name '*.pdf'`: finds all files in the current
-    directory (`.`) that end with the extension `.pdf`
 -   `grep` 'global regular expression print', for example,
     `grep Mount mountains.txt`.
     -   Options: `-i`: case insensitive, `-R`: recursive (directory),
@@ -204,12 +201,19 @@ May be cut with `cut -f (--fields) 2 file.txt`. This will produce:
 -   `uniq`: Filters out matching lines from (standard) input and writes
     it to (standard) output
 -   `wc`: counting lines, words or bites
+
+Search Commands
+---------------
+
+-   `find <dir> <expression>`: find `expression` in `dir` directory.
+    E.g., `find . -name '*.pdf'`: finds all files in the current
+    directory (`.`) that end with the extension `.pdf`
 -   `whereis <command>`: locate binary, source and man-page files for a
     `command`, e.g., `whereis whereis`.
 -   `which <command>`: locate a Bash binary on the system
 
-Storage and System Commands
----------------------------
+Memory & Storage Commands
+-------------------------
 
 -   `df`: report (`-h` human-readable) file system storage space usage.
     Disks must be mounted.
