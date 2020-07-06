@@ -59,14 +59,6 @@ and `argument(s)` are the data used as an input
 Common Bash Commands
 --------------------
 
--   `awk`: pattern scanning and text processing. Used to manipulate data
-    files, text retrieval and processing. `awk` is structured in
-    `pattern {action}` statements. e.g.,
-    `awk '{print $2 \t $1}' text.txt`: prints the 2nd and 1st column of
-    data in text.txt
-    -   `FNR`: Filter specific rows, for example:
-        `awk 'FNR==2 {print $2}'` prints the second field from the send
-        row.
 -   `bash`: interpret script file(s) with Bash
 -   `bg [job_#]`: restart a suspended job and send to the background
 -   `cat`: output contents of file to terminal
@@ -124,7 +116,6 @@ May be cut with `cut -f (--fields) 2 file.txt`. This will produce:
 -   `kill`: end processes running on the system. For example
     `kill -1 1234` kills process ID `1234` with the lowest priority
     (i.e., `-1`, 'hang-up').
--   `locate <name>`: find files and directories that match `name`
 -   `ls`: list files in working directory
     -   Options: `-a` (all files), `-l` (long format), & `-t` (order by
         time last modified)
@@ -173,25 +164,12 @@ May be cut with `cut -f (--fields) 2 file.txt`. This will produce:
     -   `-i`: interactive mode that asks for confirmation before each
         file is deleted.
 -   `rmdir`: remove an empty directory
--   `sed`: stream editor. Useful for exchanging some data with another.
-    For example, `s/str1/str2` substitutes `str1` with `str2`.
-    Specifically, `sed s/snow/rain snowforests.txt` changes the first
-    instance of 'snow' in each line to 'rain'.
-    -   global `g` option - adding `g/str1/str2` makes the substitute
-        command global
 -   `select`: Select options from an array, automatically formatted in a
     numbered list. For example, `select option in "cat" "dog" "bird"`.
 -   `shutdown`: logout or shutdown.
--   `sort`: sorts data in a file. Default is to use the first column.
-    -   options: `-n`: sorts numeric data, `-k#`: sorts column number
-        `#` (default is 1), `-u` only displays unique rows.
 -   `sudo`: super user do. This command gives the user temporary super
     user privileges. Pronounced 'sue-doo'.
     -   e.g., `sudo /root` accesses the system's root directory.
--   `tar`: Tape archive utility, creates and unpacks archive files out
-    of one or many file and supports compression. Example:
-    `tar -xvf log.tar.gz`, which unpacks a compressed `.tar` file (`-x`)
-    with verbose option (`-v`).
 -   `touch`: create new file
     -   `touch file_name.ext`: creates `file_name.ext` in the current
         directory.
@@ -208,6 +186,7 @@ Search Commands
 -   `find <dir> <expression>`: find `expression` in `dir` directory.
     E.g., `find . -name '*.pdf'`: finds all files in the current
     directory (`.`) that end with the extension `.pdf`
+-   `locate <name>`: find files and directories that match `name`
 -   `whereis <command>`: locate binary, source and man-page files for a
     `command`, e.g., `whereis whereis`.
 -   `which <command>`: locate a Bash binary on the system
@@ -234,16 +213,50 @@ Memory & Storage Commands
 -   `mkfs`: Create a file system on a specified partition. Example:
     `mkfs -t ext4 /dev/sba1` creates an `ext4` file system on the first
     partition of `sba`.
--   `tar`: create a *tape archive* file out of many files for simplified
-    movement of data.
+-   `tar`: *Tape archive* utility, creates and unpacks archive files out
+    of one or many file and supports compression.
     -   Create Archive: `tar -cf myArchive.tar dir1 dir2`: creates (`c`)
         and archive file (`f`, rather than tape) from all files in
         `dir1` and `dir2`
-    -   Extract Archive: `tar -xf myArchive.tgz dir1`: extract files
-        from `myArchive` (compressed with `gzip`) and place in dir1.
+    -   Extract Archive: `tar -xfv myArchive.tgz dir1`: extract files (`-xf`)
+        from `myArchive` (compressed with `gzip`) and place in `dir1` with verbose option (`-v`).  
 
 Note that much system information is stored in `/proc/cpuinfo` on Linux
 machines or in the `sysctl` tool on MacOS.
+
+Data Manipulation Commands
+--------------------------
+
+-   `awk`: pattern scanning and text processing. Used to manipulate data
+    files, text retrieval and processing. `awk` is structured in
+    `pattern {action}` statements. e.g.,
+    `awk '{print $2 \t $1}' text.txt`: prints the 2nd and 1st column of
+    data in text.txt
+    -   `FNR`: Filter specific rows, for example:
+        `awk 'FNR==2 {print $2}'` prints the second field from the send
+        row.
+-   `cut`: Remove or 'cut-out' sections of each line of a file or files.
+    For example, `file.txt` with the following information:
+
+```{=html}
+<!-- -->
+```
+    one     two     three   four    five
+    alpha   beta    gamma   delta   epsilon
+
+May be cut with `cut -f (--fields) 2 file.txt`. This will produce:
+
+    two
+    beta        
+-   `sed`: stream editor. Useful for exchanging some data with another.
+    For example, `s/str1/str2` substitutes `str1` with `str2`.
+    Specifically, `sed s/snow/rain snowforests.txt` changes the first
+    instance of 'snow' in each line to 'rain'.
+    -   global `g` option - adding `g/str1/str2` makes the substitute
+        command global
+-   `sort`: sorts data in a file. Default is to use the first column.
+    -   options: `-n`: sorts numeric data, `-k#`: sorts column number
+        `#` (default is 1), `-u` only displays unique rows.        
 
 Add-in Commands
 ---------------
@@ -597,7 +610,7 @@ unique adaptations to their bash profile.
 Environmental Variables
 -----------------------
 
-All envinronmental variables may be displayed with `env` or individually
+All environmental variables may be displayed with `env` or individually
 with `echo $VARIABLE_NAME`.
 
 -   `PS1`: Prompt String One, controls the prompt in the terminal the
