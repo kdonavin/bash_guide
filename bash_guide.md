@@ -519,6 +519,9 @@ as `${a[2]}` returns `orange`. Note the use of `{` and `}`.
 -   `@`: Access all elements of an array. For example, `echo ${a[@]}`
     prints all element of the the `a` array. Without this option, only
     the first element is printed.
+-   Subset arrays with `... ${a[@]:s:e}`, where `s` and `e` are integers
+    denoting staring and ending points. `e` may be omitted and the subset 
+    include all the remaining elements.
 -   `-1`: Access elements in backwards order, similar to string
     manipulation in Bash. For example, `echo ${a[@]: -1}` prints `mango`
     (note required space between `:` and `-`).
