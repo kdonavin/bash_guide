@@ -136,10 +136,6 @@ May be cut with `cut -f (--fields) 2 file.txt`. This will produce:
     -   `nano 'file.txt'`: opens `file.txt` for editing
 -   `pbcopy` (OSX only) - copy to clipboard
 -   `pbpaste` (OSX only) - paste from clipboard
--   `ping`: send, receive and time packages to a specific server. For
-    example `ping -c 5 google.com` sends and receives 5 packets from the
-    nearest google.com server. Then, it produces timing statistics based
-    on that.
 -   `printf`: format printed output. For example
     `printf "Name:\t%s\nID:\t%04d\n" "kDubs" "12"`, where `%s` is a
     provided string and `%04d` is a digit. prints the following:
@@ -256,7 +252,16 @@ May be cut with `cut -f (--fields) 2 file.txt`. This will produce:
         command global
 -   `sort`: sorts data in a file. Default is to use the first column.
     -   options: `-n`: sorts numeric data, `-k#`: sorts column number
-        `#` (default is 1), `-u` only displays unique rows.        
+        `#` (default is 1), `-u` only displays unique rows.  
+        
+Network Commands
+----------------
+
+-   `ping`: send, receive and time packages to a specific server. For
+    example `ping -c 5 google.com` sends and receives 5 packets from the
+    nearest google.com server. Then, it produces timing statistics based
+    on that.
+-   `wget`: Download of files from target URL on the web. It supports HTTP, HTTPS, and FTP protocols. For example, `wget https://example.com/dumbo.csv` downloads `dumbo.csv` to the current directory.
 
 Add-in Commands
 ---------------
