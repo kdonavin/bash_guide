@@ -256,7 +256,19 @@ May be cut with `cut -f (--fields) 2 file.txt`. This will produce:
         command global
 -   `sort`: sorts data in a file. Default is to use the first column.
     -   options: `-n`: sorts numeric data, `-k#`: sorts column number
-        `#` (default is 1), `-u` only displays unique rows.        
+        `#` (default is 1), `-u` only displays unique rows.     
+
+Networking Commands
+-------------------
+
+* `ip [-a/addr/address]`: list out various network addresses
+
+Formatting Commands
+-------------------
+
+- `column [-t -s,]`: formats a text file in to columns. May be used with `*.csv` to display data in a clearer format, and piped through `less` pager to enable scrolling. E.g., `cat data.csv | column -t -s, | less -S`.
+    - `-t`: tab separation
+    - `s<char>`: file input separator character `<char>`
 
 Add-in Commands
 ---------------
