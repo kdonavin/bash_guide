@@ -257,6 +257,7 @@ Formatting Commands
 - `column [-t -s,]`: formats a text file in to columns. May be used with `*.csv` to display data in a clearer format, and piped through `less` pager to enable scrolling. E.g., `cat data.csv | column -t -s, | less -S`.
     - `-t`: tab separation
     - `s<char>`: file input separator character `<char>`
+- `jq`: formats `.json` files prettily. Pipe in with `cat` and out to a pager for scrolling.
 -   `printf`: format printed output. For example
     `printf "Name:\t%s\nID:\t%04d\n" "kDubs" "12"`, where `%s` is a
     provided string and `%04d` is a digit. prints the following:
