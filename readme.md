@@ -136,19 +136,7 @@ May be cut with `cut -f (--fields) 2 file.txt`. This will produce:
     -   `nano 'file.txt'`: opens `file.txt` for editing
 -   `pbcopy` (OSX only) - copy to clipboard
 -   `pbpaste` (OSX only) - paste from clipboard
--   `printf`: format printed output. For example
-    `printf "Name:\t%s\nID:\t%04d\n" "kDubs" "12"`, where `%s` is a
-    provided string and `%04d` is a digit. prints the following:
-
-```{=html}
-<!-- -->
-```
-    Name:   kDubs
-    ID:     0012
-
--   `ps`: list processes running on computer. Example:
-    `ps -ax -o pid -o ucomm` prints out a list of names for processes
-    and their respective process ID numbers (PID).
+-   `ps`: list processes running on computer. Example: `ps -ax -o pid -o ucomm` prints out a list of names for processes and their respective process ID numbers (PID).
 -   `pwd`: print the current working directory
 -   `read`: read user input, e.g., `read name` stores the next user
     input in a variable `name`. The `s` (silent) option hides the user
@@ -269,6 +257,14 @@ Formatting Commands
 - `column [-t -s,]`: formats a text file in to columns. May be used with `*.csv` to display data in a clearer format, and piped through `less` pager to enable scrolling. E.g., `cat data.csv | column -t -s, | less -S`.
     - `-t`: tab separation
     - `s<char>`: file input separator character `<char>`
+-   `printf`: format printed output. For example
+    `printf "Name:\t%s\nID:\t%04d\n" "kDubs" "12"`, where `%s` is a
+    provided string and `%04d` is a digit. prints the following:
+```
+Name:   kDubs
+ID:     0012
+```
+
 
 Add-in Commands
 ---------------
