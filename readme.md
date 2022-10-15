@@ -136,10 +136,6 @@ May be cut with `cut -f (--fields) 2 file.txt`. This will produce:
     -   `nano 'file.txt'`: opens `file.txt` for editing
 -   `pbcopy` (OSX only) - copy to clipboard
 -   `pbpaste` (OSX only) - paste from clipboard
--   `ping`: send, receive and time packages to a specific server. For
-    example `ping -c 5 google.com` sends and receives 5 packets from the
-    nearest google.com server. Then, it produces timing statistics based
-    on that.
 -   `printf`: format printed output. For example
     `printf "Name:\t%s\nID:\t%04d\n" "kDubs" "12"`, where `%s` is a
     provided string and `%04d` is a digit. prints the following:
@@ -255,13 +251,17 @@ May be cut with `cut -f (--fields) 2 file.txt`. This will produce:
     -   global `g` option - adding `g/str1/str2` makes the substitute
         command global
 -   `sort`: sorts data in a file. Default is to use the first column.
-    -   options: `-n`: sorts numeric data, `-k#`: sorts column number
-        `#` (default is 1), `-u` only displays unique rows.     
+    -   options: `-n`: sorts numeric data, `-k#`: sorts column number `#` (default is 1), `-u` only displays unique rows.     
 
 Networking Commands
 -------------------
 
 * `ip [-a/addr/address]`: list out various network addresses
+-   `ping`: send, receive and time packages to a specific server. For
+    example `ping -c 5 google.com` sends and receives 5 packets from the
+    nearest google.com server. Then, it produces timing statistics based
+    on that.
+-   `wget`: Download of files from target URL on the web. It supports HTTP, HTTPS, and FTP protocols. For example, `wget https://example.com/dumbo.csv` downloads `dumbo.csv` to the current directory.
 
 Formatting Commands
 -------------------
@@ -531,6 +531,9 @@ as `${a[2]}` returns `orange`. Note the use of `{` and `}`.
 -   `@`: Access all elements of an array. For example, `echo ${a[@]}`
     prints all element of the the `a` array. Without this option, only
     the first element is printed.
+-   Subset arrays with `... ${a[@]:s:e}`, where `s` and `e` are integers
+    denoting staring and ending points. `e` may be omitted and the subset 
+    include all the remaining elements.
 -   `-1`: Access elements in backwards order, similar to string
     manipulation in Bash. For example, `echo ${a[@]: -1}` prints `mango`
     (note required space between `:` and `-`).
