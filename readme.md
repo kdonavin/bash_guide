@@ -588,6 +588,8 @@ command other than scrolling back in the terminal window.
 
 ### `less` Command
 
+_less is more_
+
 Displays a files contents on the screen until no more space remains. It
 has the *extended* capability of forward and backward navigations,
 unlike `more`. The following are shortcut commands for the terminal
