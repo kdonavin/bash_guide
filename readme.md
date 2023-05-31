@@ -285,11 +285,12 @@ To create a flag in a script use the `getopts` operator and the
 following syntax:
 
 ``` {.bash}
-while getopts a:u:b option; do
+while getopts a:u:b: option; do
     case $option in
         u) user=$OPTARG;;
         a) echo "The 'a' option is accompanied by a value: $OPTARG (followed by ':')";;
         b) echo "The 'b' option has no value"
+        ?) echo "Option $OPTARG is not valid"
     esac
 done
 
@@ -297,18 +298,7 @@ echo "User: $user"
 ```
 
 If a `:` precedes the arguments after getopts (e.g., `:a:b:`), then any
-flag may be entered and caught in the `case` statement with `?)`. For
-example,
-
-``` {.bash}
-while getopts :a:b:; do
-    case $option in
-        a) a=1;;
-        b) b=2;;
-        ?) echo "unknown '$OPTARG' option"
-    esac
-done
-```
+flag may be entered and caught in the `case` statement with `?)`. 
 
 Standard Input, Standard Output and Standard Error
 --------------------------------------------------
