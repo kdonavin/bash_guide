@@ -300,7 +300,7 @@ echo "User: $user"
 If a `:` precedes the arguments after getopts (e.g., `:a:b:`), then any
 flag may be entered and caught in the `case` statement with `?)`. 
 
-Standard Input, Standard Output and Standard Error
+Standard Input, Standard Output, and Standard Error
 --------------------------------------------------
 
 What are these
@@ -571,7 +571,7 @@ order. `-` indicates the user does not have this permission type.
     that the owner belongs to.
 -   Symbols in position `7` to `9` (`r--`) are permissions for others.
 
-File Browsing & Editing
+File Browsing and Editing
 -----------------------
 
 -   `head`: view the first few lines of a file
@@ -645,7 +645,7 @@ A text editor in terminal with more traditional features than `nano`. It has two
 * `set number`: display line numbers
 * `syntax on`/`off`: turn on/off syntax highlighting
   
-#### Writing & Exiting
+#### Writing and Exiting
 
 Writing and  commands require `:` and may be strung together (much like Unix command options).
 
@@ -769,7 +769,7 @@ else
 fi
 ```
 
-### `while` & `until` Loops
+### `while` and `until` Loops
 
 `while` loops run while a condition is true. `until` loops run until a
 condition is true. For instance:
@@ -891,7 +891,7 @@ numberthings pine birch maple
 -   `$1, $2, ...`: Numbered function arguments
 -   `$*`: All function arguments
 
-Coloring & Styling Text
+Coloring and Styling Text
 -----------------------
 
 Text may be colored with escaped ANSI characters. For example,
