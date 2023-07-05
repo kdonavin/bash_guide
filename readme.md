@@ -584,11 +584,11 @@ simple `cat` command: `more` and `less`
 
 Displays as much of files contents in the open terminal window, then
 holds for user input. `space` pages down but there is no 'page-up'
-command other than scrolling back in the terminal window.
+command other than scrolling back in the terminal window. 
 
-### `less` Command
+Instead use...
 
-_less is more_
+### `less` Command: _less is more_
 
 Displays a files contents on the screen until no more space remains. It
 has the *extended* capability of forward and backward navigations,
@@ -599,6 +599,58 @@ viewer `less`. Notably, manual pages are viewed with `less`.
 -   `b`: back
 -   `q`: quit
 -   `h`: help
+
+### `vim`: `vi`-improved
+
+A text editor in terminal with more traditional features than `nano`. It has two modes: *insert* and *command* modes.
+
+#### Insert Mode
+* `a`: enter Insert Mode once character over from cursor
+* `o`: enter Insert Mode in new line below cursor.
+* `i`: enter Insert Mode
+* `shift + i`: insert at the beginning of the line
+* `Esc`: exit insert mode
+
+#### Navigation
+
+* `Shift + Right`: move right one word
+* `Shift + Left`: move left one word
+* `Shift + g`: move cursor to bottom of file
+* `gg`: move cursor to the top of the file
+* `j`: Jump forward one line.
+* `k`: Jump backward one line.
+* `0/^`: move to the beginning of the line
+* `$`: move to the end of the line
+* `n`: next match in search
+* `(`: back one sentence (requires `shift`)
+* `)`: forward one sentence (requires `shift`)
+* `/`: search
+
+#### Editing
+
+* `p`: paste after cursor
+* `P`: paste before cursor
+* `Ctrl-R`: redo
+* `u`: undo
+* `v`: select multiple characters
+* `x`,`X`: delete character under, before cursor
+* `y`: copy ('yank') selected characters
+
+##### Delete
+* `d`: cut/delete character
+* `dd`: cut/delete row
+* `dW`: delete word
+
+#### General
+* `set number`: display line numbers
+* `syntax on`/`off`: turn on/off syntax highlighting
+  
+#### Writing & Exiting
+
+Writing and  commands require `:` and may be strung together (much like Unix command options).
+
+* `:w`: write. An optional `filename` may be included to save as a new file.
+* `:q`: quit, add `!` to force quit without saving. 
 
 User Profiles
 -------------
