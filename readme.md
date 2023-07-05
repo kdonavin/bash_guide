@@ -600,9 +600,9 @@ viewer `less`. Notably, manual pages are viewed with `less`.
 -   `q`: quit
 -   `h`: help
 
-### `vim`: `vi`-improved
+### `vim`: `vi`-`im`proved
 
-A text editor in terminal with more traditional features than `nano`. It has two modes: *insert* and *command* modes.
+A command-line text editor with more traditional features than `nano`. It has two modes: *insert* and *command* modes.
 
 #### Insert Mode
 * `a`: enter Insert Mode once character over from cursor
