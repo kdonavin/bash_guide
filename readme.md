@@ -175,7 +175,7 @@ Search Commands
     `command`, e.g., `whereis whereis`.
 -   `which <command>`: locate a Bash binary on the system
 
-Memory & Storage Commands
+Memory and Storage Commands
 -------------------------
 
 -   `df`: report (`-h` human-readable) file system storage space usage.
