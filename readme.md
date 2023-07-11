@@ -119,11 +119,9 @@ May be cut with `cut -f (--fields) 2 file.txt`. This will produce:
 -   `ls`: list files in working directory
     -   Options: `-a` (all files), `-l` (long format), & `-t` (order by
         time last modified)
--   `ln`: create a link to another directory or file (symbolic links
-    only). The `-s` option makes the link *symbolic*, and is
-    distinguishable from the original directory or file. By default,
-    `ln` creates a *hard* link to a file, which is indistinguishable
-    from the original (i.e., changes to one affects all)
+-   `ln`: create a link to another directory (symbolic links
+    only) or file. By default, `ln` creates a *hard* link to a file (directories are not applicable for hard links), which is indistinguishable from the original (i.e., changes to one affect both)
+        - `-s/--symbolic`: makes the link *symbolic*, and is distinguishable from the original directory or file. This is manda
 -   `man`: manual pages, e.g. `man ls` opens the manual for the `ls`
     command.
 -   `mkdir`: make directory
