@@ -695,20 +695,21 @@ Tells a Unix based system that this is a python file.
 
 Keywords that control flow and iterate
 
-### Value Comparison
+### Value Comparison (`test`)
 
-Bash supports comparing values between double comparison brackets,
-`[[ expression ]]`. It is important to keep spaces between the double
-brackets and the expression. These return `0` if the comparison inside
-the brackets is true, and `1` otherwise. The syntax is as follows:
+Bash compares values with the `test` command (or between double comparison brackets,
+`[[ EXPRESSION ]]`). It is important to keep spaces between the double
+brackets and the `EXPRESSION`. These set the `$?` env variable to `0` if the comparison inside
+the brackets is _true_, and set it to `1` otherwise. The syntax is as follows:
 
 ``` bash
-[[ 'cat' == 'cat' ]] 
+VAR_A=1
+VAR_B=3
+[[ $VAR_A == $VAR_B ]]
 echo $? #0 - note that $? is the 'most recent exit status of the foreground pipeline' ... whatever the means.
 ```
 
-For *string* comparison, Bash supports the usual comparators and a few
-others:
+The following operators may be used to compare any 2 values:
 
 - `<`: less than, e.g., `[[ 'a' < 'b' ]]` returns `0` for true
 - `>`: greater than
@@ -716,15 +717,25 @@ others:
 - `>=`: less than or equal to
 - `==` (or `=`) - equal to
 - `!=`: not equal to
+
+#### String Comparisons
+
+Here is an example of a string test: 
+
+```bash
+STR_A='hello world'
+STR_B='Hello World'
+test $STR_A = $STR_B && echo “true” || echo “false”
+```
+
+There are a few additional operators that may be used to compare strings or evaluate
+
 - `=~`: contains a regular expression pattern. For example,
   `[[ 'My 1st String' =~ [0-9]+ ]]` returns `0` for true
-
-Standard ‘double’ logical operators include `&&`, `||` and `!` as in
-`[[ ! $a ]]`. Also,
-
-#### Null Strings
-
-Additionally, tests for null (`-z`) and not-null (`-n`). For example:
+- Standard ‘double’ logical operators include `&&`, `||` and `!` as in
+`[[ ! $a ]] && echo 'true' || echo 'false'`. This will `echo` `'true'` if `$a` does not exist.
+- `-z`: Test for null value
+- `-n`: Non-null value
 
 ``` bash
 a=""
