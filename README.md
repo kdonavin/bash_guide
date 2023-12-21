@@ -1,5 +1,3 @@
-
-
 # A Guide to the Born Again SHell
 
 Bash is a command-line language that stands for Bourne Again Shell. It
@@ -13,62 +11,12 @@ and `argument(s)` are the data used as an input
 
 ## Table of Contents
 
-- [Common Bash Commands](#common-bash-commands)
-- [Search Commands](#search-commands)
-- [Memory and Storage Commands](#memory-and-storage-commands)
-- [Data Manipulation Commands](#data-manipulation-commands)
-- [Networking Commands](#networking-commands)
-- [Formatting Commands](#formatting-commands)
-- [Add-in Commands](#add-in-commands)
-  - [Flags](#flags)
-- [Standard Input, Standard Output, and Standard
-  Error](#standard-input-standard-output-and-standard-error)
-  - [Standard Redirect Commands](#standard-redirect-commands)
-- [Wildcards (`*`, `?`)](#wildcards)
-- [Expansions](#expansions)
-  - [Tilde Expansion](#tilde-expansion)
-  - [Brace Expansion](#brace-expansion)
-- [Variables](#variables)
-  - [Adding attributes to variables](#adding-attributes-to-variables)
-  - [Command Substitution](#command-substitution)
-  - [Arithmetic Operations](#arithmetic-operations)
-- [String Manipulation](#string-manipulation)
-- [Arrays](#arrays)
-  - [Associative Elements](#associative-elements)
-- [Navigation and Editing
-  Shortcuts](#navigation-and-editing-shortcuts)
-- [File Permissions](#file-permissions)
-- [File Browsing and Editing](#file-browsing-and-editing)
-  - [`more` Command](#more-command)
-  - [`less` Command: *less is more*](#less-command-less-is-more)
-  - [`vim`: `vi`-`im`proved](#vim-vi-improved)
-- [User Profiles](#user-profiles)
-- [Environmental Variables](#environmental-variables)
-- [Bash Scripting](#bash-scripting)
-- [Control Structures](#control-structures)
-  - [Value Comparison](#value-comparison)
-  - [Integer Comparison](#integer-comparison)
-  - [`if` statements](#if-statements)
-  - [`while` and `until` Loops](#while-and-until-loops)
-  - [`for` Loops](#for-loops)
-  - [`case`](#case)
-- [Functions](#functions)
-  - [Argument Expansion Options](#argument-expansion-options)
-- [Coloring and Styling Text](#coloring-and-styling-text)
-  - [`tput`](#tput)
-- [Here Documents](#here-documents)
-- [Super Users](#super-users)
-- [Quotes in Bash](#quotes-in-bash)
-- [Miscellaneous](#miscellaneous)
-- [Acknowledgments](#acknowledgments)
-
 ## Common Bash Commands
 
-- `bash`: interpret script file(s) with Bash
-- `bg [job_#]`: restart a suspended job and send to the background
-- `cat`: output contents of file to terminal
-  - `tac`: prints file in reverse line order
-  - `rev`: prints file out in reverse character order
+The following are lists of common useful commands in Bash, which is in no way a complete or definitive list. But, I have found these commands useful in my experience using Bash.
+
+### File-System Navigation and Manipulation
+
 - `cd <path>`: change directory to `path`
   - `cd ..`: change up one directory (i.e., parent directory)
   - `cd`: change to home directory
@@ -87,39 +35,11 @@ and `argument(s)` are the data used as an input
   `filename.txt` to `dir2` directory.
   - `scp <path/to/file> <path>`: secure version of `cp` for remote
     transfer.
-- `cut`: Remove or ‘cut-out’ sections of each line of a file or files.
-  For example, `file.txt` with the following information:
-
-<!-- -->
-
-    one     two     three   four    five
-    alpha   beta    gamma   delta   epsilon
-
-May be cut with `cut -f (--fields) 2 file.txt`. This will produce:
-
-    two
-    beta
-
-- `date`: return the date-time to the standard out. For example:
-  `date +"%d-%m-%Y"` returned `28-06-2017` when I wrote it just now.
-- `echo`: print to terminal. There are three conditions for printing.
 - `env`: list environmental variables
 - `exit`: end terminal session
-- `export`: set environmental variable, accessible to sub-processes.
-  E.g., `export name=value`.
-- `fg [job#]`: send to the foreground a job running in the background
-- `grep` ‘global regular expression print’, for example,
-  `grep Mount mountains.txt`.
-  - Options: `-i`: case insensitive, `-R`: recursive (directory), `-l`:
-    files with matches (rather than matches themselves), `-n`: shows
-    line of match, `i`: case insensitive
 - `help`: a summarized `bash` command directory for syntactical
   reference.
 - `history`: list history of used commands
-- `jobs`: show jobs running in the background, sent by `&`.
-- `kill`: end processes running on the system. For example
-  `kill -1 1234` kills process ID `1234` with the lowest priority (i.e.,
-  `-1`, ‘hang-up’).
 - `ls`: list files in working directory
   - Options: `-a` (all files), `-l` (long format), & `-t` (order by time
     last modified)
@@ -137,17 +57,9 @@ May be cut with `cut -f (--fields) 2 file.txt`. This will produce:
   - `mv file.txt dir1/`: moves `file.txt` in CWD to `dir1` OR
   - `mv file1.txt file2.txt`: changes the name of `file1.txt` to
     `file2.txt`
-- `nano`: terminal text editor
-  - `nano 'file.txt'`: opens `file.txt` for editing
 - `pbcopy` (OSX only) - copy to clipboard
 - `pbpaste` (OSX only) - paste from clipboard
-- `ps`: list processes running on computer. Example:
-  `ps -ax -o pid -o ucomm` prints out a list of names for processes and
-  their respective process ID numbers (PID).
 - `pwd`: print the current working directory
-- `read`: read user input, e.g., `read name` stores the next user input
-  in a variable `name`. The `s` (silent) option hides the user input,
-  such as for passwords.
 - `rm`: remove file or directory. For example `rm file1.txt` removes
   ‘file1.txt’ from current directory.
   - `-R`: recursively delete all files and directories within the
@@ -155,8 +67,6 @@ May be cut with `cut -f (--fields) 2 file.txt`. This will produce:
   - `-i`: interactive mode that asks for confirmation before each file
     is deleted.
 - `rmdir`: remove an empty directory
-- `select`: Select options from an array, automatically formatted in a
-  numbered list. For example, `select option in "cat" "dog" "bird"`.
 - `shutdown`: logout or shutdown.
 - `sudo`: super user do. This command gives the user temporary super
   user privileges. Pronounced ‘sue-doo’.
@@ -164,25 +74,26 @@ May be cut with `cut -f (--fields) 2 file.txt`. This will produce:
 - `touch`: create new file
   - `touch file_name.ext`: creates `file_name.ext` in the current
     directory.
-- `tr`: translate or delete characters from standard input.
-  - e.g., `cat text.txt | tr [:lower:] [:upper:]`: prints all the
-    lowercase characters in text.txt as uppercase characters.
-- `uniq`: Filters out matching lines from (standard) input and writes it
-  to (standard) output
 - `wc`: counting lines, words or bites
 
-## Search Commands
+### System Search Commands
 
 - `find <dir> <expression>`: find `expression` in `dir` directory. E.g.,
   `find . -name '*.pdf'`: finds all files in the current directory (`.`)
   that end with the extension `.pdf`
+- `grep` ‘global regular expression print’, for example,
+  `grep Mount mountains.txt`.
+  - Options: `-i`: case insensitive, `-R`: recursive (directory), `-l`:
+    files with matches (rather than matches themselves), `-n`: shows
+    line of match, `i`: case insensitive
 - `locate <name>`: find files and directories that match `name`
 - `whereis <command>`: locate binary, source and man-page files for a
   `command`, e.g., `whereis whereis`.
 - `which <command>`: locate a Bash binary on the system
 
-## Memory and Storage Commands
+### Memory, Storage, and Processes
 
+- `bg [job_#]`: restart a suspended job and send to the background
 - `df`: report (`-h` human-readable) file system storage space usage.
   Disks must be mounted.
 - `du`: report (`-h` human readable) disk usage by directory. For
@@ -192,17 +103,25 @@ May be cut with `cut -f (--fields) 2 file.txt`. This will produce:
 - `fdisk`: manipulate disk partition table. Example: `fdisk -l` lists
   all volumes with partition tables, regardless of whether they are
   mounted.
+- `fg [job#]`: send to the foreground a job running in the background
 - `free`: returns a (`-h`: human-readable) memory report.
 - `htop`: Human read-able `top` command. Shows current CPU core and
   memory usage
+- `jobs`: show jobs running in the background, sent by `&`.
+- `kill`: end processes running on the system. For example
+  `kill -1 1234` kills process ID `1234` with the lowest priority (i.e.,
+  `-1`, ‘hang-up’).
 - `lsblk`: list information about all available block devices. Example:
   `lsblk -f` outputs all known blocks an information about their file
   systems.
-- `parted`: Create and destroy partitions. Does not make file system.
-  Has interactive mode.
 - `mkfs`: Create a file system on a specified partition. Example:
   `mkfs -t ext4 /dev/sba1` creates an `ext4` file system on the first
   partition of `sba`.
+- `parted`: Create and destroy partitions. Does not make file system.
+  Has interactive mode.
+- `ps`: list processes running on computer. Example:
+  `ps -ax -o pid -o ucomm` prints out a list of names for processes and
+  their respective process ID numbers (PID).
 - `tar`: *Tape archive* utility, creates and unpacks archive files out
   of one or many file and supports compression.
   - Create Archive: `tar -cf myArchive.tar dir1 dir2`: creates (`c`) and
@@ -215,7 +134,7 @@ May be cut with `cut -f (--fields) 2 file.txt`. This will produce:
 Note that much system information is stored in `/proc/cpuinfo` on Linux
 machines or in the `sysctl` tool on MacOS.
 
-## Data Manipulation Commands
+### Data Manipulation and Formatting
 
 - `awk`: pattern scanning and text processing. Used to manipulate data
   files, text retrieval and processing. `awk` is structured in
@@ -224,6 +143,15 @@ machines or in the `sysctl` tool on MacOS.
   data in text.txt
   - `FNR`: Filter specific rows, for example: `awk 'FNR==2 {print $2}'`
     prints the second field from the send row.
+- `cat`: output contents of file to terminal
+  - `tac`: prints file in reverse line order
+  - `rev`: prints file out in reverse character order
+- `column [-t -s,]`: formats a text file in to columns. May be used with
+  `*.csv` to display data in a clearer format, and piped through `less`
+  pager to enable scrolling. E.g.,
+  `cat data.csv | column -t -s, | less -S`.
+  - `-t`: tab separation
+  - `s<char>`: file input separator character `<char>`
 - `cut`: Remove or ‘cut-out’ sections of each line of a file or files.
   For example, `file.txt` with the following information:
 
@@ -237,6 +165,18 @@ May be cut with `cut -f (--fields) 2 file.txt`. This will produce:
     two
     beta        
 
+- `date`: return the date-time to the standard out. For example:
+  `date +"%d-%m-%Y"` returned `28-06-2017` when I wrote it just now.
+- `echo`: print to terminal
+- `jq`: formats `.json` files prettily. Pipe in with `cat` and out to a
+  pager for scrolling.
+- `printf`: format printed output. For example
+  `printf "Name:\t%s\nID:\t%04d\n" "kDubs" "12"`, where `%s` is a
+  provided string and `%04d` is a digit. prints the following:
+<!-- -->
+
+    Name:   kDubs
+    ID:     0012
 - `sed`: stream editor. Useful for exchanging some data with another.
   For example, `s/str1/str2` substitutes `str1` with `str2`.
   Specifically, `sed s/snow/rain snowforests.txt` changes the first
@@ -246,8 +186,13 @@ May be cut with `cut -f (--fields) 2 file.txt`. This will produce:
 - `sort`: sorts data in a file. Default is to use the first column.
   - options: `-n`: sorts numeric data, `-k#`: sorts column number `#`
     (default is 1), `-u` only displays unique rows.
+- `tr`: translate or delete characters from standard input.
+  - e.g., `cat text.txt | tr [:lower:] [:upper:]`: prints all the
+    lowercase characters in text.txt as uppercase characters.
+- `uniq`: Filters out matching lines from (standard) input and writes it
+  to (standard) output
 
-## Networking Commands
+### Networking Commands
 
 - `ip [-a/addr/address]`: list out various network addresses
 - `ping`: send, receive and time packages to a specific server. For
@@ -259,30 +204,19 @@ May be cut with `cut -f (--fields) 2 file.txt`. This will produce:
   `wget https://example.com/dumbo.csv` downloads `dumbo.csv` to the
   current directory.
 
-## Formatting Commands
+### Other Useful Commands
 
-- `column [-t -s,]`: formats a text file in to columns. May be used with
-  `*.csv` to display data in a clearer format, and piped through `less`
-  pager to enable scrolling. E.g.,
-  `cat data.csv | column -t -s, | less -S`.
-  - `-t`: tab separation
-  - `s<char>`: file input separator character `<char>`
-- `jq`: formats `.json` files prettily. Pipe in with `cat` and out to a
-  pager for scrolling.
-- `printf`: format printed output. For example
-  `printf "Name:\t%s\nID:\t%04d\n" "kDubs" "12"`, where `%s` is a
-  provided string and `%04d` is a digit. prints the following:
+- `bash`: interpret script file(s) with Bash
+- `export`: set environmental variable, accessible to sub-processes.
+  E.g., `export name=value`.
+- `imgcat`: Like cat but for images. An add-in command
+- `read`: read user input, e.g., `read name` stores the next user input
+  in a variable `name`. The `s` (silent) option hides the user input,
+  such as for passwords.
+- `select`: Select options from an array, automatically formatted in a
+  numbered list. For example, `select option in "cat" "dog" "bird"`.
 
-<!-- -->
-
-    Name:   kDubs
-    ID:     0012
-
-## Add-in Commands
-
-- `imgcat`: Like cat but for images.
-
-### Flags
+## Flags
 
 Flags (AKA options) modify Bash commands. There are two syntactical
 types of flags: *short-form* and *long-form*. Short-form flags follow
@@ -599,6 +533,10 @@ viewer `less`. Notably, manual pages are viewed with `less`.
 - `b`: back
 - `q`: quit
 - `h`: help
+
+### `nano`: terminal text editor
+
+A commandline text editor (that I happen to never use in favor of `vim`). `nano 'file.txt'`: opens `file.txt` for editing
 
 ### `vim`: `vi`-`im`proved
 
