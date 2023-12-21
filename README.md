@@ -1,3 +1,57 @@
+- [A Guide to the Born Again SHell](#a-guide-to-the-born-again-shell)
+  - [Table of Contents](#table-of-contents)
+  - [Common Bash Commands](#common-bash-commands)
+    - [File-System Navigation and
+      Manipulation](#file-system-navigation-and-manipulation)
+    - [System Search Commands](#system-search-commands)
+    - [Memory, Storage, and Processes](#memory-storage-and-processes)
+    - [Data Manipulation and
+      Formatting](#data-manipulation-and-formatting)
+    - [Networking Commands](#networking-commands)
+    - [Other Useful Commands](#other-useful-commands)
+  - [Flags](#flags)
+  - [Standard Input, Standard Output, and Standard
+    Error](#standard-input-standard-output-and-standard-error)
+    - [Standard Redirect Commands](#standard-redirect-commands)
+  - [Wildcards (`*`, `?`)](#wildcards)
+  - [Expansions](#expansions)
+    - [Tilde Expansion](#tilde-expansion)
+    - [Brace Expansion](#brace-expansion)
+  - [Variables](#variables)
+    - [Adding attributes to variables](#adding-attributes-to-variables)
+    - [Command Substitution](#command-substitution)
+    - [Arithmetic Operations](#arithmetic-operations)
+  - [String Manipulation](#string-manipulation)
+  - [Arrays](#arrays)
+    - [Associative Elements](#associative-elements)
+  - [Navigation and Editing
+    Shortcuts](#navigation-and-editing-shortcuts)
+  - [File Permissions](#file-permissions)
+  - [File Browsing and Editing](#file-browsing-and-editing)
+    - [`more` Command](#more-command)
+    - [`less` Command: *less is more*](#less-command-less-is-more)
+    - [`nano`: terminal text editor](#nano-terminal-text-editor)
+    - [`vim`: `vi`-`im`proved](#vim-vi-improved)
+  - [User Profiles](#user-profiles)
+  - [Environmental Variables](#environmental-variables)
+  - [Bash Scripting](#bash-scripting)
+  - [Control Structures](#control-structures)
+    - [Value Comparison (`test`)](#value-comparison-test)
+    - [Integer Comparison](#integer-comparison)
+    - [`if` statements](#if-statements)
+    - [`while` and `until` Loops](#while-and-until-loops)
+    - [`for` Loops](#for-loops)
+    - [`case`](#case)
+  - [Functions](#functions)
+    - [Argument Expansion Options](#argument-expansion-options)
+  - [Coloring and Styling Text](#coloring-and-styling-text)
+    - [`tput`](#tput)
+  - [Here Documents](#here-documents)
+  - [Super Users](#super-users)
+  - [Quotes in Bash](#quotes-in-bash)
+  - [Miscellaneous](#miscellaneous)
+  - [Acknowledgments](#acknowledgments)
+
 # A Guide to the Born Again SHell
 
 Bash is a command-line language that stands for Bourne Again Shell. It
@@ -13,7 +67,9 @@ and `argument(s)` are the data used as an input
 
 ## Common Bash Commands
 
-The following are lists of common useful commands in Bash, which is in no way a complete or definitive list. But, I have found these commands useful in my experience using Bash.
+The following are lists of common useful commands in Bash, which is in
+no way a complete or definitive list. But, I have found these commands
+useful in my experience using Bash.
 
 ### File-System Navigation and Manipulation
 
@@ -167,28 +223,36 @@ May be cut with `cut -f (--fields) 2 file.txt`. This will produce:
 
 - `date`: return the date-time to the standard out. For example:
   `date +"%d-%m-%Y"` returned `28-06-2017` when I wrote it just now.
+
 - `echo`: print to terminal
+
 - `jq`: formats `.json` files prettily. Pipe in with `cat` and out to a
   pager for scrolling.
+
 - `printf`: format printed output. For example
   `printf "Name:\t%s\nID:\t%04d\n" "kDubs" "12"`, where `%s` is a
-  provided string and `%04d` is a digit. prints the following:
-<!-- -->
+  provided string and `%04d` is a digit. prints the following: <!-- -->
 
-    Name:   kDubs
-    ID:     0012
+  Name: kDubs ID: 0012
+
 - `sed`: stream editor. Useful for exchanging some data with another.
   For example, `s/str1/str2` substitutes `str1` with `str2`.
   Specifically, `sed s/snow/rain snowforests.txt` changes the first
   instance of ‘snow’ in each line to ‘rain’.
+
   - global `g` option - adding `g/str1/str2` makes the substitute
     command global
+
 - `sort`: sorts data in a file. Default is to use the first column.
+
   - options: `-n`: sorts numeric data, `-k#`: sorts column number `#`
     (default is 1), `-u` only displays unique rows.
+
 - `tr`: translate or delete characters from standard input.
+
   - e.g., `cat text.txt | tr [:lower:] [:upper:]`: prints all the
     lowercase characters in text.txt as uppercase characters.
+
 - `uniq`: Filters out matching lines from (standard) input and writes it
   to (standard) output
 
@@ -536,7 +600,8 @@ viewer `less`. Notably, manual pages are viewed with `less`.
 
 ### `nano`: terminal text editor
 
-A commandline text editor (that I happen to never use in favor of `vim`). `nano 'file.txt'`: opens `file.txt` for editing
+A commandline text editor (that I happen to never use in favor of
+`vim`). `nano 'file.txt'`: opens `file.txt` for editing
 
 ### `vim`: `vi`-`im`proved
 
@@ -635,10 +700,11 @@ Keywords that control flow and iterate
 
 ### Value Comparison (`test`)
 
-Bash compares values with the `test` command (or between double comparison brackets,
-`[[ EXPRESSION ]]`). It is important to keep spaces between the double
-brackets and the `EXPRESSION`. These set the `$?` env variable to `0` if the comparison inside
-the brackets is _true_, and set it to `1` otherwise. The syntax is as follows:
+Bash compares values with the `test` command (or between double
+comparison brackets, `[[ EXPRESSION ]]`). It is important to keep spaces
+between the double brackets and the `EXPRESSION`. These set the `$?` env
+variable to `0` if the comparison inside the brackets is *true*, and set
+it to `1` otherwise. The syntax is as follows:
 
 ``` bash
 VAR_A=1
@@ -658,20 +724,22 @@ The following operators may be used to compare any 2 values:
 
 #### String Comparisons
 
-Here is an example of a string test: 
+Here is an example of a string test:
 
-```bash
+``` bash
 STR_A='hello world'
 STR_B='Hello World'
 test $STR_A = $STR_B && echo “true” || echo “false”
 ```
 
-There are a few additional operators that may be used to compare strings or evaluate
+There are a few additional operators that may be used to compare strings
+or evaluate
 
 - `=~`: contains a regular expression pattern. For example,
   `[[ 'My 1st String' =~ [0-9]+ ]]` returns `0` for true
 - Standard ‘double’ logical operators include `&&`, `||` and `!` as in
-`[[ ! $a ]] && echo 'true' || echo 'false'`. This will `echo` `'true'` if `$a` does not exist.
+  `[[ ! $a ]] && echo 'true' || echo 'false'`. This will `echo` `'true'`
+  if `$a` does not exist.
 - `-z`: Test for null value
 - `-n`: Non-null value
 
@@ -851,14 +919,18 @@ separated by `;`. Here is a table of ANSI values for text color:
 
 <figure>
 <img src="images/colored_text.jpg" alt="colored text" />
-<figcaption aria-hidden="true">colored text</figcaption>
+<figcaption aria-hidden="true">
+colored text
+</figcaption>
 </figure>
 
 And for style:
 
 <figure>
 <img src="images/styled_text.jpg" alt="styled text" />
-<figcaption aria-hidden="true">styled text</figcaption>
+<figcaption aria-hidden="true">
+styled text
+</figcaption>
 </figure>
 
 ### `tput`
@@ -869,14 +941,18 @@ example, `$(tput blink)` turns on blink. Here are a list of options:
 
 <figure>
 <img src="images/styled_text_tput.jpg" alt="styled text" />
-<figcaption aria-hidden="true">styled text</figcaption>
+<figcaption aria-hidden="true">
+styled text
+</figcaption>
 </figure>
 
 With colors:
 
 <figure>
 <img src="images/colored_text_tput.jpg" alt="styled text" />
-<figcaption aria-hidden="true">styled text</figcaption>
+<figcaption aria-hidden="true">
+styled text
+</figcaption>
 </figure>
 
 More commands for `tput` may be found in the `man` pages for `terminfo`.
