@@ -91,6 +91,7 @@ useful in my experience using Bash.
     transfer.
 - `env`: list environmental variables
 - `exit`: end terminal session
+- `file <file>`: Determines the file type of a specified file `file`. E.g., `file myarchive.tar.gz` reports ```myarchive.tar.gz: gzip compressed data, was "myarchive.tar"``` 
 - `help`: a summarized `bash` command directory for syntactical
   reference.
 - `history`: list history of used commands
